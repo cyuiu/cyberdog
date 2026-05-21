@@ -1,0 +1,59 @@
+[[program]]
+key = "left_hand_wave"
+title = "握左手"
+file = "01_left_hand_wave.toml"
+description = "内置动作 mode=62, gait_id=1"
+
+[[program]]
+key = "sit_down"
+title = "坐下"
+file = "02_sit_down.toml"
+description = "内置动作 mode=62, gait_id=3"
+
+[[program]]
+key = "hip_swing"
+title = "扭屁股"
+file = "03_hip_swing.toml"
+description = "内置动作 mode=62, gait_id=4"
+
+[[program]]
+key = "head_twist"
+title = "扭头"
+file = "04_head_twist.toml"
+description = "内置动作 mode=62, gait_id=5"
+
+[[program]]
+key = "stretch_body"
+title = "伸懒腰"
+file = "05_stretch_body.toml"
+description = "内置动作 mode=62, gait_id=6"
+
+[[program]]
+key = "ballet_dance"
+title = "芭蕾舞"
+file = "06_ballet_dance.toml"
+description = "内置动作 mode=62, gait_id=11"
+
+[[program]]
+key = "built_in_moonwalk"
+title = "内置太空步"
+file = "07_built_in_moonwalk.toml"
+description = "内置动作 mode=62, gait_id=12"
+
+[[program]]
+key = "push_up"
+title = "俯卧撑"
+file = "08_push_up.toml"
+description = "内置动作 mode=62, gait_id=34"
+
+[[program]]
+key = "trot_slow_circle"
+title = "慢跑转圈"
+file = "09_trot_slow_circle.toml"
+description = "locomotion mode=11, gait_id=27"
+
+[[program]]
+key = "bound_turn"
+title = "四足跳跑转向"
+file = "10_bound_turn.toml"
+description = "locomotion mode=11, gait_id=7"
