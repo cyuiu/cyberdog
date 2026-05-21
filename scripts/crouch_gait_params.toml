@@ -1,0 +1,217 @@
+# Gait Params for crouch trot
+# body_pos_des = [roll, pitch, yaw, x, y, z]
+#   z < 0 → lower body (crouching)
+# landing_pos_des = [foot1_x, foot1_y, foot1_z, foot2_x, foot2_y, foot2_z,
+#                    foot3_x, foot3_y, foot3_z, foot4_x, foot4_y, foot4_z]
+
+# Phase 1: diagonal FR+HL stance, FL+HR swing forward
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  0.00, -0.00, 0.0,  0.00, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  -0.065, -0.00, 0.0,  -0.065, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.00, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  0.00, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [-0.065, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  -0.065, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+# Repeat 3 more cycles with same params but forward velocity
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  0.00, -0.00, 0.0,  0.00, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  -0.065, -0.00, 0.0,  -0.065, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.00, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  0.00, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [-0.065, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  -0.065, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+# Cycle 3
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  0.00, -0.00, 0.0,  0.00, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  -0.065, -0.00, 0.0,  -0.065, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.00, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  0.00, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [-0.065, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  -0.065, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+# Cycle 4
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  0.00, -0.00, 0.0,  0.00, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.065, 0.00, 0.0,  -0.065, -0.00, 0.0,  -0.065, 0.00, 0.0,  0.065, 0.00, 0.0]
+step_height     = [0.04, 0.01, 0.01, 0.04]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [0.00, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  0.00, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.10, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.12]
+landing_pos_des = [-0.065, 0.00, 0.0,  0.065, -0.00, 0.0,  0.065, 0.00, 0.0,  -0.065, 0.00, 0.0]
+step_height     = [0.01, 0.04, 0.04, 0.01]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 240

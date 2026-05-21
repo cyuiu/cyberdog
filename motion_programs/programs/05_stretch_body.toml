@@ -1,0 +1,44 @@
+[[step]]
+mode = 12
+gait_id = 0
+contact = 0
+life_count = 0
+vel_des = [0.0, 0.0, 0.0]
+rpy_des = [0.0, 0.0, 0.0]
+pos_des = [0.0, 0.0, 0.0]
+acc_des = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point = [0.0, 0.0, 0.0]
+foot_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+step_height = [0.0, 0.0]
+value = 0
+duration = 6000
+
+[[step]]
+mode = 62
+gait_id = 6
+contact = 0
+life_count = 0
+vel_des = [0.0, 0.0, 0.0]
+rpy_des = [0.0, 0.0, 0.0]
+pos_des = [0.0, 0.0, 0.0]
+acc_des = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point = [0.0, 0.0, 0.0]
+foot_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+step_height = [0.0, 0.0]
+value = 0
+duration = 4500
+
+[[step]]
+mode = 7
+gait_id = 0
+contact = 0
+life_count = 0
+vel_des = [0.0, 0.0, 0.0]
+rpy_des = [0.0, 0.0, 0.0]
+pos_des = [0.0, 0.0, 0.0]
+acc_des = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point = [0.0, 0.0, 0.0]
+foot_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+step_height = [0.0, 0.0]
+value = 0
+duration = 3000
