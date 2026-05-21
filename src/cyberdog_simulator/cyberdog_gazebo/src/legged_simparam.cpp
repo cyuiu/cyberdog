@@ -43,7 +43,7 @@ namespace gazebo
     void SimParam::LoadYaml()
     {
         printf( "[Simulation] Loading YAML files\n" );
-        user_parameters_.DefineAndInitializeFromYamlFile( GetLocoConfigDirectoryPath() + "cyberdog2-ctrl-user-parameters-crouch.yaml" );
+        user_parameters_.DefineAndInitializeFromYamlFile( GetLocoConfigDirectoryPath() + "cyberdog2-ctrl-user-parameters.yaml" );
 
         if ( !user_parameters_.IsFullyInitialized() ) {
         printf( "Not all user parameters were initialized. Missing:\n%s\n", user_parameters_.GenerateUnitializedList().c_str() );
