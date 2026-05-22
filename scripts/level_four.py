@@ -6,13 +6,18 @@ Crouch height is switched dynamically via ROS2 "yaml_parameter" topic,
 same approach as set.py. Normal locomotion scripts are unaffected.
 
 States:
-  STAND_UP   – recovery stand (mode=12)
-  MOVE_TO_P2 – lateral move to p2
-  MOVE_TO_P3 – sprint forward to p3
-  SET_CROUCH – send crouch params via ROS2, then zero-vel locomotion
-               to let the height filter lower the body
-  SQUAT_WALK – mode=11 + gait_id=3 slow forward at crouch height
-  FINAL_STOP – restore normal height, damper stop
+  STAND_UP         – recovery stand (mode=12)
+  ALIGN_DIRECTION  – rotate in place to face target direction
+  ALIGN_POSITION   – move to exact p1 start position
+  MOVE_TO_P2       – lateral move to p2
+  MOVE_TO_P3       – sprint forward to p3
+  ALIGN_POSITION_2 – fine-tune position to exact p3 before crouch
+  SET_CROUCH       – send crouch params via ROS2, then zero-vel locomotion
+                     to let the height filter lower the body
+  ALIGN_DIRECTION_2 – re-align before crouch walk (correct drift)
+  SQUAT_WALK       – mode=11 + gait_id=3 slow forward at crouch height
+  RETURN_TO_P3     – reverse walk back to p3 (no turn, backward motion)
+  FINAL_STOP       – restore normal height, damper stop
 """
 import math
 import sys
@@ -61,6 +66,18 @@ RESTORE_PARAMS = [
 # Time (in control cycles at 10 Hz) for zero-vel locomotion during crouch settle
 CROUCH_SETTLE_CYCLES = 30  # ~3 seconds
 
+# Direction alignment
+YAW_ALIGN_TARGET = 1.5646     # rad (~90°, face +y), fixed desired yaw
+YAW_ALIGN_TOLERANCE = 0.02    # rad (~1.1°), stop rotating when error below this
+YAW_ALIGN_KP = 0.8            # proportional gain (lower = smoother approach)
+YAW_ALIGN_MAX_VYAW = 0.3      # max angular speed (rad/s), slow for precision
+YAW_ALIGN_MIN_VYAW = 0.08     # min angular speed to overcome static friction
+
+# Position alignment
+POS_ALIGN_TOLERANCE = 0.03    # m, stop moving when distance error below this
+POS_ALIGN_KP = 0.5            # proportional gain for position correction
+POS_ALIGN_MAX_VEL = 0.15      # max correction speed (m/s)
+
 
 def make_yaml_param(name, kind, value, is_user=True):
     """Build a YamlParam ROS2 message."""
@@ -78,15 +95,20 @@ def make_yaml_param(name, kind, value, is_user=True):
     return msg
 
 
+def normalize_angle(angle):
+    """将角度归一化到 [-π, π] 范围。"""
+    return math.atan2(math.sin(angle), math.cos(angle))
+
+
 class SequentialTaskNode(Node):
     def __init__(self):
         super().__init__("sequential_task_node")
 
         # --- 目标坐标点 ---
-        self.p1 = (3.08, 6.96)   # 初始起立点
-        self.p2 = (2.13, 7.13)   # 横移目标点
-        self.p3 = (2.09, 9.68)   # 冲刺结束点，开始准备蹲下
-        self.p4 = (2.02, 10.98)  # 最终蹲着走到的目标点
+        self.p1 = (3.0777, 7.0474)  # 初始起立点
+        self.p2 = (2.0026, 7.0393)  # 横移目标点
+        self.p3 = (2.0729, 9.6959)  # 冲刺结束点，开始准备蹲下
+        self.p4 = (2.1071, 11.0007)  # 最终蹲着走到的目标点
 
         self.state = "STAND_UP"
         self.latest_pose = None
@@ -161,68 +183,195 @@ class SequentialTaskNode(Node):
 
         # ── Stage 1: Stand up ─────────────────────────────────
         if self.state == "STAND_UP":
+            # 无论上次如何退出，启动就恢复正常高度，防止蹲姿参数残留
+            self.get_logger().info("Stage 1: Restoring normal height...")
+            self.send_yaml_params(RESTORE_PARAMS)
+            time.sleep(0.5)
             self.get_logger().info("Stage 1: Recovery stand...")
             self.recovery_stand_blocking()
-            self.state = "MOVE_TO_P2"
+            self.state = "ALIGN_DIRECTION"
 
-        # ── Stage 2: Lateral move to P2 ────────────────────────
+        # ── Stage 2: Align direction ───────────────────────────
+        elif self.state == "ALIGN_DIRECTION":
+            yaw_err = normalize_angle(YAW_ALIGN_TARGET - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 2: aligned, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "ALIGN_POSITION"
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                # keep sign and enforce minimum magnitude
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 2: aligning — yaw={yaw:.3f}  "
+                    f"target={YAW_ALIGN_TARGET:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 3: Align position to P1 ──────────────────────
+        elif self.state == "ALIGN_POSITION":
+            dx = self.p1[0] - x
+            dy = self.p1[1] - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 3: position aligned, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_P2"
+            else:
+                # world-frame error → body-frame velocity
+                body_vx = POS_ALIGN_KP * (dx * math.cos(yaw) + dy * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx * math.sin(yaw) + dy * math.cos(yaw))
+                # limit speed
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 3: position aligning — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 4: Lateral move to P2 ────────────────────────
         elif self.state == "MOVE_TO_P2":
             dx = self.p2[0] - x
             if abs(dx) > 0.1:
                 self.publish(0.0, 0.2, 0.0)
                 self.get_logger().info(
-                    f"Stage 2: lateral move x={x:.2f}",
+                    f"Stage 4: lateral move x={x:.2f}",
                     throttle_duration_sec=1.0,
                 )
             else:
                 self.state = "MOVE_TO_P3"
 
-        # ── Stage 3: Sprint to P3 ──────────────────────────────
+        # ── Stage 5: Sprint to P3 ──────────────────────────────
         elif self.state == "MOVE_TO_P3":
             dy = self.p3[1] - y
             if dy > 0.1:
                 self.publish(0.4, 0.0, 0.0)
                 self.get_logger().info(
-                    f"Stage 3: sprint y={y:.2f}",
+                    f"Stage 5: sprint y={y:.2f}",
                     throttle_duration_sec=1.0,
                 )
             else:
-                self.state = "SET_CROUCH"
+                self.state = "ALIGN_POSITION_2"
                 self.state_counter = 0
 
-        # ── Stage 4: Crouch via ROS2 params + zero-vel settle ──
+        # ── Stage 6: Align position to P3 ──────────────────────
+        elif self.state == "ALIGN_POSITION_2":
+            dx = self.p3[0] - x
+            dy = self.p3[1] - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 6: position aligned, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "SET_CROUCH"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx * math.cos(yaw) + dy * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx * math.sin(yaw) + dy * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 6: position aligning — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 7: Crouch via ROS2 params + zero-vel settle ──
         elif self.state == "SET_CROUCH":
             if self.state_counter == 0:
-                self.get_logger().info("Stage 4: Sending crouch params via ROS2...")
+                self.get_logger().info("Stage 7: Sending crouch params via ROS2...")
                 self.send_yaml_params(CROUCH_PARAMS)
-                self.get_logger().info("Stage 4: Zero-vel locomotion — lowering body...")
+                self.get_logger().info("Stage 7: Zero-vel locomotion — lowering body...")
 
             self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
             self.state_counter += 1
 
             if self.state_counter >= CROUCH_SETTLE_CYCLES:
-                self.state = "SQUAT_WALK"
+                self.state = "ALIGN_DIRECTION_2"
                 self.state_counter = 0
-                self.get_logger().info("Stage 4 done, entering crouch walk.")
+                self.get_logger().info("Stage 7 done, re-aligning before crouch walk.")
 
-        # ── Stage 5: Crouch walk to P4 ─────────────────────────
+        # ── Stage 8: Re-align before crouch walk ───────────────
+        elif self.state == "ALIGN_DIRECTION_2":
+            yaw_err = normalize_angle(YAW_ALIGN_TARGET - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 8: aligned, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
+                self.state = "SQUAT_WALK"
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw, mode=11, gait=3)
+                self.get_logger().info(
+                    f"Stage 8: aligning — yaw={yaw:.3f}  "
+                    f"target={YAW_ALIGN_TARGET:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 9: Crouch walk to P4 ─────────────────────────
         elif self.state == "SQUAT_WALK":
             dy = self.p4[1] - y
             if dy > 0.05:
                 self.publish(0.06, 0.0, 0.0, mode=11, gait=3,
                              step_height=[0.05, 0.05])
                 self.get_logger().info(
-                    f"Stage 5: crouch walk y={y:.2f}",
+                    f"Stage 9: crouch walk y={y:.2f}",
                     throttle_duration_sec=1.0,
                 )
             else:
-                self.state = "FINAL_STOP"
+                self.state = "RETURN_TO_P3"
                 self.state_counter = 0
 
-        # ── Stage 6: Restore height + damper stop ──────────────
+        # ── Stage 10: Reverse walk back to P3 ─────────────────
+        elif self.state == "RETURN_TO_P3":
+            # world-frame error from current pos → P3
+            dx_world = self.p3[0] - x
+            dy_world = self.p3[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 10: returned to P3, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
+                self.state = "FINAL_STOP"
+                self.state_counter = 0
+            else:
+                # rotate world error → body frame (same as ALIGN_POSITION)
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0, mode=11, gait=3)
+                self.get_logger().info(
+                    f"Stage 10: reversing — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 11: Restore height + damper stop ─────────────
         elif self.state == "FINAL_STOP":
             if self.state_counter == 0:
-                self.get_logger().info("Stage 6: Restoring normal height...")
+                self.get_logger().info("Stage 11: Restoring normal height...")
                 self.send_yaml_params(RESTORE_PARAMS)
             self.publish(0, 0, 0, mode=7)
             self.state_counter += 1
@@ -238,7 +387,8 @@ def main():
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        pass
+        node.get_logger().info("Ctrl+C caught, restoring normal height...")
+        node.send_yaml_params(RESTORE_PARAMS)
     finally:
         node.destroy_node()
         rclpy.shutdown()
