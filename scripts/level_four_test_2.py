@@ -15,6 +15,10 @@ States:
   MOVE_TO_P11_BACK  – walk back to p11 (standing)
   SET_CROUCH_3      – send crouch params, zero-vel settle at p11
   SQUAT_WALK_3      – crouch walk back to p10
+  STAND_UP_AT_P10   – restore normal height, settle at p10
+  MOVE_TO_P13       – walk to p13 (standing)
+  ALIGN_YAW_P13     – align yaw to 0.0212 rad at p13
+  MOVE_TO_P14       – walk forward to p14 (standing)
   FINAL_STOP       – damper stop
 """
 import math
@@ -65,6 +69,7 @@ CROUCH_SETTLE_CYCLES = 30  # ~3 seconds
 
 # Direction alignment
 YAW_ALIGN_TARGET = 1.5646     # rad (~90°, face +y)
+YAW_P13_TARGET = 0.0212       # rad, P13朝向 (约1.21°)
 YAW_ALIGN_TOLERANCE = 0.02
 YAW_ALIGN_KP = 0.8
 YAW_ALIGN_MAX_VYAW = 0.3
@@ -103,6 +108,8 @@ class TestTaskNode2(Node):
         self.p10 = (-0.0873, 7.8036)
         self.p11 = (-0.1482, 10.2624)
         self.p12 = (-0.1482, 10.9000)
+        self.p13 = (-0.0742, 7.2026)   # P13: 定位点
+        self.p14 = (2.9389, 7.1826)    # P14: 从P13前进到达
 
         self.state = "INIT_STAND"
         self.latest_pose = None
@@ -121,7 +128,7 @@ class TestTaskNode2(Node):
             self.on_pose, qos_profile_sensor_data,
         )
         self.create_timer(0.1, self.control_loop)
-        self.get_logger().info("Test 2: P10 → crouch walk → P11 → stop")
+        self.get_logger().info("Test 2: P10 → crouch walk → P11 → P12 → P11 → P10 → P13 → P14 → stop")
 
     def on_pose(self, msg):
         try:
@@ -355,7 +362,7 @@ class TestTaskNode2(Node):
                     f"Stage 11: crouch walked to P10, dist={dist:.3f} m"
                 )
                 self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
-                self.state = "FINAL_STOP"
+                self.state = "STAND_UP_AT_P10"
                 self.state_counter = 0
             else:
                 body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
@@ -369,7 +376,94 @@ class TestTaskNode2(Node):
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 11: Damper stop ────────────────────────────────
+        # ── Stage 12: Stand up at P10 ────────────────────────────
+        elif self.state == "STAND_UP_AT_P10":
+            if self.state_counter == 0:
+                self.get_logger().info("Stage 12: Restoring normal height, standing up at P10...")
+                self.send_yaml_params(RESTORE_PARAMS)
+
+            self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
+            self.state_counter += 1
+
+            if self.state_counter >= CROUCH_SETTLE_CYCLES:
+                self.state = "MOVE_TO_P13"
+                self.state_counter = 0
+                self.get_logger().info("Stage 12 done, walking to P13.")
+
+        # ── Stage 13: Walk to P13 (standing) ────────────────────
+        elif self.state == "MOVE_TO_P13":
+            dx_world = self.p13[0] - x
+            dy_world = self.p13[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 13: reached P13, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "ALIGN_YAW_P13"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 13: walking to P13 — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 14: Align yaw at P13 ──────────────────────────
+        elif self.state == "ALIGN_YAW_P13":
+            yaw_err = normalize_angle(YAW_P13_TARGET - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 14: aligned to P13 yaw, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_P14"
+                self.state_counter = 0
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 14: aligning yaw — yaw={yaw:.3f}  "
+                    f"target={YAW_P13_TARGET:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 15: Walk forward to P14 (standing) ────────────
+        elif self.state == "MOVE_TO_P14":
+            dx_world = self.p14[0] - x
+            dy_world = self.p14[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 15: reached P14, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "FINAL_STOP"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 15: walking to P14 — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 16: Damper stop ────────────────────────────────
         elif self.state == "FINAL_STOP":
             self.publish(0, 0, 0, mode=7)
             self.state_counter += 1
