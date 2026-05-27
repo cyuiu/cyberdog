@@ -1,0 +1,4678 @@
+# Gait Def
+
+# Basic cycle for forward leaning walk
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+# Basic cycle for forward leaning walk
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Right Front legs and Left Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+
+[[section]]
+contact  = [0, 1, 1, 0]  # Left Front legs and Right Back
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 4
+

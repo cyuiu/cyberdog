@@ -1,0 +1,1250 @@
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+# Gait Def for forward low posture walking
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+
+# Right front and left back legs
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+[[section]]
+contact  = [1, 0, 0, 1]  # Lift RF and LB
+duration = 6
+
+[[section]]
+contact  = [1, 1, 1, 1]  # All legs contact
+duration = 8
+
+# Left front and right back legs
+[[section]]
+contact  = [0, 1, 1, 0]  # Lift LF and RB
+duration = 6
+
+
+

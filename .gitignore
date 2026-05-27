@@ -1,0 +1,25 @@
+# Build artifacts
+build/
+install/
+log/
+
+# IDE
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# LCM build
+lcm/build/
+
+# Large binary files
+*.so
+*.o
+*.a
+*.dll
+
+# ROS2 generated
+*.egg-info/
+dist/

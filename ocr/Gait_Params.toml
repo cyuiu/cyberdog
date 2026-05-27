@@ -1,0 +1,211 @@
+# Gait Params
+
+# 自定义低机身高度前进步态，索引0
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, -0.18]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾直行步态，索引1
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.0]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.05，索引2
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.05]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.1，索引3
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.1]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.15，索引4
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.15]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.2，索引5
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.2]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.25，索引6
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.25]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾左转步态，转向速度0.3，索引7
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, 0.3]  # 添加y方向速度实现左转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.05，索引8
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.05]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.1，索引9
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.1]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.15，索引10
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.15]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.2，索引11
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.2]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.25，索引12
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.25]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
+
+# 自定义前倾右转步态，转向速度0.3，索引13
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.1, 0.0, -0.3]  # 添加负的y方向速度实现右转
+body_pos_des    = [0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+landing_pos_des = [0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04, 0.10, 0.0, -0.04]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [1.0, 1.0, 1.0, 1.5, 1.5, 2.0]
+use_mpc_traj    = 1
+mu              = 0.75
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 0.6
+interpolation   = 0.8
