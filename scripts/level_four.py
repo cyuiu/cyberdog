@@ -41,7 +41,13 @@ States:
   MOVE_TO_P11_BACK   – walk back to p11 (standing)
   SET_CROUCH_3       – send crouch params, zero-vel settle at p11
   SQUAT_WALK_3       – crouch walk back to p10
+  STAND_UP_AT_P10    – restore normal height, settle at p10
+  MOVE_TO_P13        – walk to p13 (standing)
+  ALIGN_YAW_P13      – align yaw to 0.0212 rad at p13
+  MOVE_TO_P14        – walk forward to p14 (standing)
   FINAL_STOP        – damper stop
+  TURN_TO_ZERO      – rotate to 0 rad
+  MOVE_TO_EXIT      – walk to exit point (3.1112, 7.1091)
 """
 import math
 import sys
@@ -58,6 +64,8 @@ import lcm
 import rclpy
 from rclpy.node import Node
 from gazebo_msgs.msg import ModelStates
+from gazebo_msgs.srv import SetEntityState
+from geometry_msgs.msg import Point, Quaternion
 from rclpy.qos import qos_profile_sensor_data
 from cyberdog_msg.msg import YamlParam
 
@@ -92,6 +100,7 @@ CROUCH_SETTLE_CYCLES = 30  # ~3 seconds
 
 # Direction alignment
 YAW_ALIGN_TARGET = 1.5646     # rad (~90°, face +y), fixed desired yaw
+YAW_P13_TARGET = 0.0212       # rad, P13朝向 (约1.21°)
 YAW_ALIGN_TOLERANCE = 0.02    # rad (~1.1°), stop rotating when error below this
 YAW_ALIGN_KP = 0.8            # proportional gain (lower = smoother approach)
 YAW_ALIGN_MAX_VYAW = 0.3      # max angular speed (rad/s), slow for precision
@@ -141,11 +150,15 @@ class SequentialTaskNode(Node):
         self.p10 = (-0.0873, 7.8036)  # 最终前进点
         self.p11 = (-0.1482, 10.2624)  # 蹲走最终点
         self.p12 = (-0.1482, 10.9000)  # 站姿前进终点
+        self.p13 = (-0.0742, 7.2026)   # P13: 定位点
+        self.p14 = (2.9389, 7.1826)    # P14: 从P13前进到达
+        self.p_exit = (3.1112, 7.1091)  # 出口点
 
         self.state = "STAND_UP"
         self.latest_pose = None
         self.state_counter = 0
         self.turn_target_yaw = 0.0
+        self.task_finished = False
 
         # --- LCM 初始化 ---
         self.lc = lcm.LCM("udpm://239.255.76.67:7671?ttl=255")
@@ -159,6 +172,10 @@ class SequentialTaskNode(Node):
             self.on_pose, qos_profile_sensor_data,
         )
         self.create_timer(0.1, self.control_loop)
+
+        # 创建 Gazebo 状态设置客户端（用于传送到下一关）
+        self.set_state_client = self.create_client(SetEntityState, "/gazebo/set_entity_state")
+
         self.get_logger().info(
             "Task: stand → lateral → sprint → crouch walk → reverse → 180° turn → return to P2 → stop"
         )
@@ -855,7 +872,7 @@ class SequentialTaskNode(Node):
                     f"Stage 35: crouch walked to P10, dist={dist:.3f} m"
                 )
                 self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
-                self.state = "FINAL_STOP"
+                self.state = "STAND_UP_AT_P10"
                 self.state_counter = 0
             else:
                 body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
@@ -869,27 +886,168 @@ class SequentialTaskNode(Node):
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 35: Damper stop ───────────────────────────────
+        # ── Stage 36: Stand up at P10 ────────────────────────────
+        elif self.state == "STAND_UP_AT_P10":
+            if self.state_counter == 0:
+                self.get_logger().info("Stage 36: Restoring normal height, standing up at P10...")
+                self.send_yaml_params(RESTORE_PARAMS)
+
+            self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
+            self.state_counter += 1
+
+            if self.state_counter >= CROUCH_SETTLE_CYCLES:
+                self.state = "MOVE_TO_P13"
+                self.state_counter = 0
+                self.get_logger().info("Stage 36 done, walking to P13.")
+
+        # ── Stage 37: Walk to P13 (standing) ────────────────────
+        elif self.state == "MOVE_TO_P13":
+            dx_world = self.p13[0] - x
+            dy_world = self.p13[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 37: reached P13, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "ALIGN_YAW_P13"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 37: walking to P13 — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 38: Align yaw at P13 ──────────────────────────
+        elif self.state == "ALIGN_YAW_P13":
+            yaw_err = normalize_angle(YAW_P13_TARGET - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 38: aligned to P13 yaw, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_P14"
+                self.state_counter = 0
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 38: aligning yaw — yaw={yaw:.3f}  "
+                    f"target={YAW_P13_TARGET:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 39: Walk forward to P14 (standing) ────────────
+        elif self.state == "MOVE_TO_P14":
+            dx_world = self.p14[0] - x
+            dy_world = self.p14[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 39: reached P14, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "FINAL_STOP"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 39: walking to P14 — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 39: Damper stop ───────────────────────────────
         elif self.state == "FINAL_STOP":
             self.publish(0, 0, 0, mode=7)
             self.state_counter += 1
 
             if self.state_counter >= 20:  # ~2 seconds
-                self.get_logger().info("Task complete.")
+                self.get_logger().info("Stage 39 done, turning to 0 rad.")
+                self.state = "TURN_TO_ZERO"
+                self.state_counter = 0
+
+        # ── Stage 40: Rotate to 0 rad ──────────────────────────
+        elif self.state == "TURN_TO_ZERO":
+            yaw_err = normalize_angle(0.0 - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 40: aligned to 0 rad, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_EXIT"
+                self.state_counter = 0
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 40: turning — yaw={yaw:.3f}  "
+                    f"target=0.000  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 41: Walk to exit point ────────────────────────
+        elif self.state == "MOVE_TO_EXIT":
+            dx_world = self.p_exit[0] - x
+            dy_world = self.p_exit[1] - y
+            dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 41: reached exit point, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
                 self.state = "FINISHED"
+                self.task_finished = True
+            else:
+                body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx_world * math.sin(yaw) + dy_world * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 41: walking to exit — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
 
 
 def main():
     rclpy.init()
     node = SequentialTaskNode()
     try:
-        rclpy.spin(node)
+        # 使用循环代替 rclpy.spin，以便检测任务完成
+        while rclpy.ok():
+            rclpy.spin_once(node, timeout_sec=0.1)
+            if node.task_finished:
+                node.get_logger().info("任务完成，准备退出")
+                break
     except KeyboardInterrupt:
         node.get_logger().info("Ctrl+C caught, restoring normal height...")
         node.send_yaml_params(RESTORE_PARAMS)
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
+
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == "__main__":

@@ -134,6 +134,86 @@ class CrossRockroad3(Node):
         self.cmd.life_count = (self.cmd.life_count + 1) % 128
         self.lc.publish("robot_control_cmd", self.cmd.encode())
 
+    def walk_to_next_level_start(self):
+        """走到第二关的起始位置 (3.0985, 0.6795)，朝向 1.417 rad"""
+        target_x = 3.0985
+        target_y = 0.6795
+        target_yaw = 1.417
+        pos_tolerance = 0.15
+        yaw_tolerance = 0.1
+        walk_speed = 0.12
+        turn_speed = 0.25
+
+        self.get_logger().info(f"开始走到第二关起始位置: ({target_x}, {target_y})")
+
+        # 先站立起来
+        self.get_logger().info("正在站立...")
+        for _ in range(60):  # 站立3秒
+            rclpy.spin_once(self, timeout_sec=0.01)
+            self.cmd.mode = 12
+            self.cmd.gait_id = 0
+            self.cmd.contact = 0
+            self.cmd.vel_des = [0.0, 0.0, 0.0]
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+            time.sleep(0.05)
+        self.get_logger().info("站立完成")
+
+        max_walk_time = 60
+        start_time = time.time()
+        while rclpy.ok():
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+
+            elapsed = time.time() - start_time
+            if elapsed > max_walk_time:
+                self.get_logger().info(f"已行走{elapsed:.1f}秒超时，停止行走")
+                self.publish_cmd(0.0, 0.0, 0.0)
+                return
+
+            x, y, z, yaw = self.latest_pose
+            dx = target_x - x
+            dy = target_y - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < pos_tolerance:
+                self.get_logger().info(f"已到达第二关起始位置附近，距离: {dist:.3f}m")
+                break
+
+            target_angle = math.atan2(dy, dx)
+            yaw_error = self.normalize_angle(target_angle - yaw)
+
+            if abs(yaw_error) > yaw_tolerance:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.publish_cmd(0.0, 0.0, vyaw)
+            else:
+                self.publish_cmd(walk_speed, 0.0, 0.0)
+
+            self.get_logger().info(
+                f"走向第二关: dist={dist:.3f}m, yaw_err={yaw_error:.3f}rad",
+                throttle_duration_sec=1.0,
+            )
+            time.sleep(0.05)
+
+        self.get_logger().info("调整朝向对准第二关...")
+        for _ in range(100):
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+            _, _, _, yaw = self.latest_pose
+            yaw_error = self.normalize_angle(target_yaw - yaw)
+            if abs(yaw_error) < yaw_tolerance:
+                break
+            vyaw = turn_speed if yaw_error > 0 else -turn_speed
+            self.publish_cmd(0.0, 0.0, vyaw)
+            time.sleep(0.05)
+
+        self.publish_cmd(0.0, 0.0, 0.0)
+        self.get_logger().info("已到达第二关起始位置，准备开始第二关")
+
     def recovery_stand(self):
         self.get_logger().info("Recovery stand for 5 seconds...")
         self.cmd.mode = 12
@@ -345,14 +425,21 @@ def main():
     node = CrossRockroad3()
 
     try:
-        rclpy.spin(node)
+        # 使用循环代替 rclpy.spin，以便检测任务完成
+        while rclpy.ok():
+            rclpy.spin_once(node, timeout_sec=0.1)
+            if node.final_stopped:
+                node.get_logger().info("任务完成，准备走到第二关起始位置")
+                break
     except KeyboardInterrupt:
         node.get_logger().info("KeyboardInterrupt, damper stop")
         node.damper_stop()
-    finally:
-        node.publish_cmd(0.0, 0.0, 0.0)
-        node.destroy_node()
-        rclpy.shutdown()
+
+    node.publish_cmd(0.0, 0.0, 0.0)
+    # 走到第二关起始位置
+    node.walk_to_next_level_start()
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == "__main__":

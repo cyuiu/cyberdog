@@ -294,6 +294,154 @@ class HitOrangeBallsBase(Node):
         self.cmd.life_count = (self.cmd.life_count + 1) % 128
         self.lc.publish("robot_control_cmd", self.cmd.encode())
 
+    def walk_to_start_position(self):
+        """自行走到本关起始位置，替代传送"""
+        # 先站立起来
+        if not hasattr(self, '_walk_start_initialized'):
+            self._walk_start_initialized = True
+            self._walk_start_time = time.time()
+            self.get_logger().info("正在站立...")
+            for _ in range(60):  # 站立3秒
+                rclpy.spin_once(self, timeout_sec=0.01)
+                self.cmd.mode = 12
+                self.cmd.gait_id = 3
+                self.cmd.contact = 15
+                self.cmd.vel_des = [0.0, 0.0, 0.0]
+                self.cmd.life_count = (self.cmd.life_count + 1) % 128
+                self.lc.publish("robot_control_cmd", self.cmd.encode())
+                time.sleep(0.05)
+            self.get_logger().info("站立完成")
+
+        # 超时检查
+        if time.time() - self._walk_start_time > 60:
+            self.get_logger().info("走到起始位置超时，继续运行")
+            self.publish_cmd(0.0, 0.0, 0.0)
+            self._walk_start_initialized = False
+            return True
+
+        rclpy.spin_once(self, timeout_sec=0.01)
+        if self.latest_pose is None:
+            return False
+
+        x, y, z, yaw = self.latest_pose
+        dx = self.start_x - x
+        dy = self.start_y - y
+        dist = math.sqrt(dx * dx + dy * dy)
+
+        pos_tolerance = 0.15
+        yaw_tolerance = 0.1
+        walk_speed = 0.12
+        turn_speed = 0.25
+
+        if dist < pos_tolerance:
+            # 已到达起始位置附近，调整朝向
+            yaw_error = self.normalize_angle(self.start_yaw - yaw)
+            if abs(yaw_error) < yaw_tolerance:
+                self.publish_cmd(0.0, 0.0, 0.0)
+                self.get_logger().info(f"已到达起始位置: ({x:.3f}, {y:.3f}), yaw={yaw:.3f}")
+                return True
+            else:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.publish_cmd(0.0, 0.0, vyaw)
+                self.get_logger().info(f"调整朝向: yaw_err={yaw_error:.3f}rad", throttle_duration_sec=1.0)
+                return False
+
+        # 走向起始位置
+        target_angle = math.atan2(dy, dx)
+        yaw_error = self.normalize_angle(target_angle - yaw)
+
+        if abs(yaw_error) > yaw_tolerance:
+            vyaw = turn_speed if yaw_error > 0 else -turn_speed
+            self.publish_cmd(0.0, 0.0, vyaw)
+        else:
+            self.publish_cmd(walk_speed, 0.0, 0.0)
+
+        self.get_logger().info(
+            f"走向起始位置: dist={dist:.3f}m, yaw_err={yaw_error:.3f}rad",
+            throttle_duration_sec=1.0,
+        )
+        return False
+
+    def walk_to_next_level_start(self):
+        """走到第三关的起始位置 (-0.2248, 4.8461)，朝向 1.178 rad"""
+        target_x = -0.2248
+        target_y = 4.8461
+        target_yaw = 1.178
+        pos_tolerance = 0.15
+        yaw_tolerance = 0.1
+        walk_speed = 0.12
+        turn_speed = 0.25
+
+        self.get_logger().info(f"开始走到第三关起始位置: ({target_x}, {target_y})")
+
+        # 先站立起来
+        self.get_logger().info("正在站立...")
+        for _ in range(60):  # 站立3秒
+            rclpy.spin_once(self, timeout_sec=0.01)
+            self.cmd.mode = 12
+            self.cmd.gait_id = 3
+            self.cmd.contact = 15
+            self.cmd.vel_des = [0.0, 0.0, 0.0]
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+            time.sleep(0.05)
+        self.get_logger().info("站立完成")
+
+        max_walk_time = 60
+        start_time = time.time()
+        while rclpy.ok():
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+
+            elapsed = time.time() - start_time
+            if elapsed > max_walk_time:
+                self.get_logger().info(f"已行走{elapsed:.1f}秒超时，停止行走")
+                self.publish_cmd(0.0, 0.0, 0.0)
+                return
+
+            x, y, z, yaw = self.latest_pose
+            dx = target_x - x
+            dy = target_y - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < pos_tolerance:
+                self.get_logger().info(f"已到达第三关起始位置附近，距离: {dist:.3f}m")
+                break
+
+            target_angle = math.atan2(dy, dx)
+            yaw_error = self.normalize_angle(target_angle - yaw)
+
+            if abs(yaw_error) > yaw_tolerance:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.publish_cmd(0.0, 0.0, vyaw)
+            else:
+                self.publish_cmd(walk_speed, 0.0, 0.0)
+
+            self.get_logger().info(
+                f"走向第三关: dist={dist:.3f}m, yaw_err={yaw_error:.3f}rad",
+                throttle_duration_sec=1.0,
+            )
+            time.sleep(0.05)
+
+        self.get_logger().info("调整朝向对准第三关...")
+        for _ in range(100):
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+            _, _, _, yaw = self.latest_pose
+            yaw_error = self.normalize_angle(target_yaw - yaw)
+            if abs(yaw_error) < yaw_tolerance:
+                break
+            vyaw = turn_speed if yaw_error > 0 else -turn_speed
+            self.publish_cmd(0.0, 0.0, vyaw)
+            time.sleep(0.05)
+
+        self.publish_cmd(0.0, 0.0, 0.0)
+        self.get_logger().info("已到达第三关起始位置，准备开始第三关")
+
     @staticmethod
     def yaw_to_quaternion(yaw):
         qz = math.sin(yaw / 2.0)
@@ -641,13 +789,13 @@ class HitOrangeBallsBase(Node):
 
         if self.state == "START":
             if self.reset_start_pose:
-                self.switch_state("RESET_POSE")
+                self.switch_state("WALK_TO_START")
             else:
                 self.switch_state("RECOVERY_STAND")
             return
 
-        if self.state == "RESET_POSE":
-            if self.poll_reset_robot_pose():
+        if self.state == "WALK_TO_START":
+            if self.walk_to_start_position():
                 self.switch_state("RECOVERY_STAND")
             return
 
@@ -824,14 +972,21 @@ def main():
     node = HitOrangeBallsBase()
 
     try:
-        rclpy.spin(node)
+        # 使用循环代替 rclpy.spin，以便检测任务完成
+        while rclpy.ok():
+            rclpy.spin_once(node, timeout_sec=0.1)
+            if node.final_stopped:
+                node.get_logger().info("任务完成，准备走到第三关起始位置")
+                break
     except KeyboardInterrupt:
         node.get_logger().info("收到 KeyboardInterrupt，执行阻尼停止。")
         node.damper_stop()
-    finally:
-        node.publish_cmd(0.0, 0.0, 0.0)
-        node.destroy_node()
-        rclpy.shutdown()
+
+    node.publish_cmd(0.0, 0.0, 0.0)
+    # 走到第三关起始位置
+    node.walk_to_next_level_start()
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == "__main__":

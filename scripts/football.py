@@ -673,7 +673,6 @@ class FootballTest3(Node):
         self.state_start_time = time.time()
         if new_state in (
             "CONFIRM_BALL_RESET",
-            "CONFIRM_DOG_STAGE_START",
         ):
             self.clear_pending_get()
         if new_state == "RECOVERY_STAND":
@@ -751,6 +750,80 @@ class FootballTest3(Node):
         while angle < -math.pi:
             angle += 2.0 * math.pi
         return angle
+
+    def walk_to_start_position(self):
+        """自行走到本关起始位置，替代传送"""
+        # 先站立起来
+        if not hasattr(self, '_walk_start_initialized'):
+            self._walk_start_initialized = True
+            self._walk_start_time = time.time()
+            self.log_status("正在站立...")
+            for _ in range(60):  # 站立3秒
+                rclpy.spin_once(self, timeout_sec=0.01)
+                self.publish_recovery_stand()
+                time.sleep(0.05)
+            self.log_status("站立完成")
+
+        # 超时检查
+        if time.time() - self._walk_start_time > 60:
+            self.log_status("走到起始位置超时，继续运行")
+            self.publish_zero_hold()
+            self._walk_start_initialized = False
+            return True
+
+        rclpy.spin_once(self, timeout_sec=0.01)
+        robot_pos = self.get_robot_position()
+        if robot_pos is None:
+            return False
+
+        x, y = robot_pos[0], robot_pos[1]
+        target_x = self.stage_start_pose[0]
+        target_y = self.stage_start_pose[1]
+        target_yaw = self.stage_start_yaw
+
+        dx = target_x - x
+        dy = target_y - y
+        dist = math.sqrt(dx * dx + dy * dy)
+
+        pos_tolerance = 0.15
+        yaw_tolerance = 0.1
+        walk_speed = 0.12
+        turn_speed = 0.25
+
+        if dist < pos_tolerance:
+            # 已到达起始位置附近，调整朝向
+            robot_yaw = self.get_robot_yaw()
+            if robot_yaw is None:
+                return False
+            yaw_error = self.normalize_angle(target_yaw - robot_yaw)
+            if abs(yaw_error) < yaw_tolerance:
+                self.publish_zero_hold()
+                self.log_event("已到达第六关起始位置: (%.3f, %.3f)" % (x, y))
+                return True
+            else:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.publish_walk_cmd(0.0, 0.0, vyaw, 0.03)
+                self.log_status("调整朝向: yaw_err=%.3f rad" % yaw_error)
+                return False
+
+        # 走向起始位置
+        robot_yaw = self.get_robot_yaw()
+        if robot_yaw is None:
+            return False
+
+        target_angle = math.atan2(dy, dx)
+        yaw_error = self.normalize_angle(target_angle - robot_yaw)
+
+        if abs(yaw_error) > yaw_tolerance:
+            vyaw = turn_speed if yaw_error > 0 else -turn_speed
+            self.publish_walk_cmd(0.0, 0.0, vyaw, 0.03)
+        else:
+            self.publish_walk_cmd(walk_speed, 0.0, 0.0, 0.03)
+
+        self.log_status(
+            "走向第六关起始位置: dist=%.3f m, yaw_err=%.3f rad" % (dist, yaw_error)
+        )
+        return False
 
     @staticmethod
     def clamp(value, low, high):
@@ -1547,33 +1620,8 @@ class FootballTest3(Node):
             return
 
         if self.state == "RESET_DOG_TO_STAGE_START":
-            self.publish_zero_hold()
-            if not self.set_state_client.service_is_ready():
-                self.log_status("状态=RESET_DOG_TO_STAGE_START | 等待 /gazebo/set_entity_state 服务")
-                return
-            if self.pending_set_future is None:
-                req = self.make_set_state_request(
-                    self.robot_name,
-                    self.stage_start_pose,
-                    self.quaternion_from_yaw(self.stage_start_yaw),
-                )
-                self.begin_set_state("重置 robot 到第六关起点", req)
-                return
-            self.poll_set_state("CONFIRM_DOG_STAGE_START")
-            return
-
-        if self.state == "CONFIRM_DOG_STAGE_START":
-            self.publish_zero_hold()
-            self.confirm_with_cache_or_get(
-                self.robot_name,
-                self.stage_start_pose,
-                self.robot_reset_tolerance,
-                "xy",
-                self.robot_reset_confirm_timeout,
-                "RECOVERY_STAND",
-                "robot 已到第六关起点",
-                "robot 坐标确认失败",
-            )
+            if self.walk_to_start_position():
+                self.switch_state("RECOVERY_STAND")
             return
 
         if self.state == "RECOVERY_STAND":

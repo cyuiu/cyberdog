@@ -10,6 +10,7 @@ import cv2
 import numpy as np
 # 导入 ROS2 QoS 与 Service 模块
 from rclpy.qos import QoSProfile, ReliabilityPolicy
+from gazebo_msgs.msg import ModelStates
 from gazebo_msgs.srv import SetEntityState
 from geometry_msgs.msg import Pose, Point, Quaternion
 
@@ -35,19 +36,27 @@ class PerfectStartTrackingNode(Node):
     def __init__(self):
         super().__init__("perfect_start_track3")
         self.bridge = CvBridge()
-        
+
+        # LCM 初始化
+        self.lc = lcm.LCM("udpm://239.255.76.67:7671?ttl=255")
+        self.cmd = robot_control_cmd_lcmt()
+
         # 控制变量
         self.error = 0.0
         self.last_error = 0.0
         self.wz = 0.0
         self.has_image = False
-        
+
         # 状态机变量
-        self.forced_right_turn_done = False 
-        self.is_turning_right = False       
+        self.forced_right_turn_done = False
+        self.is_turning_right = False
         self.turn_start_time = 0.0
-        self.is_reached_goal = False        
+        self.is_reached_goal = False
         self.first_image_time = 0.0
+
+        # 位置跟踪变量
+        self.latest_pose = None
+        self.received_pose = False
 
         # 配置兼容仿真图像的 QoS
         qos_profile = QoSProfile(depth=10)
@@ -55,38 +64,231 @@ class PerfectStartTrackingNode(Node):
 
         # 订阅专属物理俯视相机话题
         self.sub_img = self.create_subscription(
-            Image, 
-            "/rgb_camera/rgb_camera_sensor/image_raw", 
-            self.image_callback, 
+            Image,
+            "/down_rgb_camera/down_rgb_camera_sensor/image_raw",
+            self.image_callback,
             qos_profile
+        )
+
+        # 订阅模型状态用于位置跟踪
+        self.create_subscription(
+            ModelStates,
+            "/gazebo/model_states",
+            self.on_model_states,
+            QoSProfile(depth=10)
         )
 
         # 创建 ROS 2 客户端，用于全自动设置机器人绝对位置（彻底抹平手动摆放误差）
         self.set_state_client = self.create_client(SetEntityState, "/gazebo/set_entity_state")
 
-    def telemetry_perfect_spawn(self):
-        """全自动闪现：强行把狗子校准到你死代码最完美的绝对黄金起点和绝对正前方朝向"""
-        print("[🛠️ 智能外挂] 正在连接 Gazebo 状态服务...")
-        if not self.set_state_client.wait_for_service(timeout_sec=2.0):
-            print("[⚠️ 警告] 未检测到 Gazebo 服务，将使用当前手动摆放位置起跑！")
+    def on_model_states(self, msg):
+        try:
+            index = list(msg.name).index("robot")
+        except ValueError:
+            self.received_pose = False
             return
 
-        req = SetEntityState.Request()
-        req.state.name = "robot"  # 仿真里的机器人名字
-        req.state.reference_frame = "world"
-        
-        # 1. 绝对黄金起跑坐标：对齐你死代码的第一个安全点 (-0.2248, 4.8461)
-        req.state.pose.position = Point(x=-0.2248, y=4.8461, z=0.4)
-        
-        # 2. 绝对黄金车头朝向：计算从起点到第二个安全点 (-0.1028, 5.1363) 的完美偏角，换算为四元数
-        # 角度约 67.5 度，车头完美斜向右上方正对黄线直道！
-        req.state.pose.orientation = Quaternion(x=0.0, y=0.0, z=0.55557, w=0.83147)
-        
-        # 异步发送瞬移请求，等待一小段时间确保生效
-        self.set_state_client.call_async(req)
-        time.sleep(1.0)  # 等待 Gazebo 处理瞬移
-        rclpy.spin_once(self, timeout_sec=0.5)
-        print("[🏁 智能外挂] 机器狗已全自动瞬移至绝对黄金起跑点！车身已对齐 100% 中央！")
+        pose = msg.pose[index]
+        q = pose.orientation
+        yaw = math.atan2(
+            2.0 * (q.w * q.z + q.x * q.y),
+            1.0 - 2.0 * (q.y * q.y + q.z * q.z),
+        )
+        self.latest_pose = (pose.position.x, pose.position.y, pose.position.z, yaw)
+        self.received_pose = True
+
+    @staticmethod
+    def normalize_angle(angle):
+        while angle > math.pi:
+            angle -= 2.0 * math.pi
+        while angle < -math.pi:
+            angle += 2.0 * math.pi
+        return angle
+
+    def walk_to_next_level_start(self):
+        """走到第四关的起始位置 (3.0777, 7.0474)，朝向 1.5646 rad"""
+        target_x = 3.0777
+        target_y = 7.0474
+        target_yaw = 1.5646
+        pos_tolerance = 0.15
+        yaw_tolerance = 0.1
+        walk_speed = 0.12
+        turn_speed = 0.25
+
+        print(f"[🚶 走向第四关] 开始走到第四关起始位置: ({target_x}, {target_y})")
+
+        # 先站立起来
+        print("[🔄 站立] 正在站立...")
+        for _ in range(60):  # 站立3秒
+            rclpy.spin_once(self, timeout_sec=0.01)
+            self.cmd.mode = 12
+            self.cmd.gait_id = 3
+            self.cmd.contact = 15
+            self.cmd.vel_des = [0.0, 0.0, 0.0]
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+            time.sleep(0.05)
+        print("[✅ 站立] 站立完成")
+
+        max_walk_time = 60  # 最大行走时间60秒
+        start_time = time.time()
+        while rclpy.ok():
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+
+            # 检查是否超时
+            elapsed = time.time() - start_time
+            if elapsed > max_walk_time:
+                print(f"[⏰ 超时] 已行走{elapsed:.1f}秒，停止行走继续运行")
+                self.cmd.mode = 7
+                self.cmd.vel_des = [0.0, 0.0, 0.0]
+                self.lc.publish("robot_control_cmd", self.cmd.encode())
+                return
+
+            x, y, z, yaw = self.latest_pose
+            dx = target_x - x
+            dy = target_y - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < pos_tolerance:
+                print(f"[✅ 到达] 已到达第四关起始位置附近，距离: {dist:.3f}m")
+                break
+
+            target_angle = math.atan2(dy, dx)
+            yaw_error = self.normalize_angle(target_angle - yaw)
+
+            if abs(yaw_error) > yaw_tolerance:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.cmd.mode = 11
+                self.cmd.gait_id = 3
+                self.cmd.vel_des = [0.0, 0.0, vyaw]
+                self.cmd.life_count = (self.cmd.life_count + 1) % 128
+                self.lc.publish("robot_control_cmd", self.cmd.encode())
+            else:
+                self.cmd.mode = 11
+                self.cmd.gait_id = 3
+                self.cmd.vel_des = [walk_speed, 0.0, 0.0]
+                self.cmd.life_count = (self.cmd.life_count + 1) % 128
+                self.lc.publish("robot_control_cmd", self.cmd.encode())
+
+            print(f"[🚶 走向第四关] dist={dist:.3f}m, yaw_err={yaw_error:.3f}rad")
+            time.sleep(0.05)
+
+        print("[🔄 调整朝向] 正在调整朝向对准第四关...")
+        for _ in range(100):
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+            _, _, _, yaw = self.latest_pose
+            yaw_error = self.normalize_angle(target_yaw - yaw)
+            if abs(yaw_error) < yaw_tolerance:
+                break
+            vyaw = turn_speed if yaw_error > 0 else -turn_speed
+            self.cmd.mode = 11
+            self.cmd.gait_id = 3
+            self.cmd.vel_des = [0.0, 0.0, vyaw]
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+            time.sleep(0.05)
+
+        self.cmd.mode = 7
+        self.cmd.vel_des = [0.0, 0.0, 0.0]
+        self.lc.publish("robot_control_cmd", self.cmd.encode())
+        print("[✅ 完成] 已到达第四关起始位置，准备开始第四关")
+
+    def walk_to_start_position(self):
+        """自行走到本关起始位置，高精度版本"""
+        target_x = -0.2149
+        target_y = 4.8571
+        target_yaw = 1.1699  # 67.03度
+        pos_tolerance = 0.10  # 位置精度10cm
+        yaw_tolerance = 0.05  # 角度精度约3度
+        walk_speed = 0.10     # 行走速度
+        turn_speed = 0.18     # 转向速度
+        max_adjust_time = 30  # 最大调整时间30秒
+
+        print(f"[🚶 走向起始位] 开始走到第三关起始位置: ({target_x}, {target_y}), yaw={target_yaw:.4f}")
+
+        # 先站立起来
+        print("[🔄 站立] 正在站立...")
+        for _ in range(60):  # 站立3秒
+            rclpy.spin_once(self, timeout_sec=0.01)
+            self.cmd.mode = 12
+            self.cmd.gait_id = 3
+            self.cmd.contact = 15
+            self.cmd.vel_des = [0.0, 0.0, 0.0]
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+            time.sleep(0.05)
+        print("[✅ 站立] 站立完成")
+
+        start_time = time.time()
+        while rclpy.ok():
+            rclpy.spin_once(self, timeout_sec=0.01)
+            if self.latest_pose is None:
+                time.sleep(0.05)
+                continue
+
+            # 检查是否超时
+            elapsed = time.time() - start_time
+            if elapsed > max_adjust_time:
+                print(f"[⏰ 超时] 已调整{elapsed:.1f}秒，停止调整继续运行")
+                self.cmd.mode = 7
+                self.cmd.vel_des = [0.0, 0.0, 0.0]
+                self.lc.publish("robot_control_cmd", self.cmd.encode())
+                return
+
+            x, y, z, yaw = self.latest_pose
+            dx = target_x - x
+            dy = target_y - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < pos_tolerance:
+                # 已到达起始位置附近，精细调整朝向
+                yaw_error = self.normalize_angle(target_yaw - yaw)
+                if abs(yaw_error) < yaw_tolerance:
+                    # 到达目标，保持稳定2秒
+                    self.cmd.mode = 7
+                    self.cmd.vel_des = [0.0, 0.0, 0.0]
+                    self.lc.publish("robot_control_cmd", self.cmd.encode())
+                    print(f"[✅ 到达] 已精确到达起始位置: ({x:.4f}, {y:.4f}), yaw={yaw:.4f}")
+                    print("[⏳ 稳定] 等待2秒确保稳定...")
+                    time.sleep(2.0)
+                    return
+                else:
+                    # 精细调整朝向，使用更小的速度
+                    vyaw = 0.08 if yaw_error > 0 else -0.08
+                    self.cmd.mode = 11
+                    self.cmd.gait_id = 3
+                    self.cmd.vel_des = [0.0, 0.0, vyaw]
+                    self.cmd.life_count = (self.cmd.life_count + 1) % 128
+                    self.lc.publish("robot_control_cmd", self.cmd.encode())
+                    print(f"[🔄 精调朝向] yaw_err={yaw_error:.4f}rad ({math.degrees(yaw_error):.2f}°)")
+                    time.sleep(0.05)
+                    continue
+
+            # 走向起始位置
+            target_angle = math.atan2(dy, dx)
+            yaw_error = self.normalize_angle(target_angle - yaw)
+
+            if abs(yaw_error) > yaw_tolerance:
+                vyaw = turn_speed if yaw_error > 0 else -turn_speed
+                self.cmd.mode = 11
+                self.cmd.gait_id = 3
+                self.cmd.vel_des = [0.0, 0.0, vyaw]
+            else:
+                self.cmd.mode = 11
+                self.cmd.gait_id = 3
+                self.cmd.vel_des = [walk_speed, 0.0, 0.0]
+
+            self.cmd.life_count = (self.cmd.life_count + 1) % 128
+            self.lc.publish("robot_control_cmd", self.cmd.encode())
+
+            print(f"[🚶 走向起始位] dist={dist:.4f}m ({dist*100:.1f}cm), yaw_err={yaw_error:.4f}rad ({math.degrees(yaw_error):.2f}°)")
+            time.sleep(0.05)
 
     def image_callback(self, msg):
         try:
@@ -172,12 +374,12 @@ class PerfectStartTrackingNode(Node):
 def main():
     rclpy.init()
     node = PerfectStartTrackingNode()
-    lc = lcm.LCM("udpm://239.255.76.67:7671?ttl=255")
-    cmd = robot_control_cmd_lcmt()
+    lc = node.lc
+    cmd = node.cmd
     life = 0
 
-    # ===================== 🚀 核心外挂触发 =====================
-    node.telemetry_perfect_spawn()
+    # ===================== 🚀 走到起始位置 =====================
+    node.walk_to_start_position()
 
     print("[Visual Track] 站立准备中...")
     t_start = time.time()
@@ -205,12 +407,20 @@ def main():
                 cmd.life_count = life
                 lc.publish("robot_control_cmd", cmd.encode())
                 if int(time.time()) % 3 == 0:
-                    print("[等待中] 还没收到相机图像，请检查话题 /rgb_camera/rgb_camera_sensor/image_raw 是否有数据...")
+                    print("[等待中] 还没收到相机图像，请检查话题 /down_rgb_camera/down_rgb_camera_sensor/image_raw 是否有数据...")
                 time.sleep(0.05)
                 continue
             
             if node.is_reached_goal:
                 break
+
+            # 检查 y 坐标，到达 y>=7 时停止
+            if node.latest_pose is not None:
+                _, y, _, _ = node.latest_pose
+                if y >= 7.0:
+                    print(f"[🏁 y坐标到达] y={y:.3f} >= 7.0，停止巡线")
+                    node.is_reached_goal = True
+                    break
                 
             cmd.mode = 11       
             cmd.gait_id = 3
@@ -239,8 +449,11 @@ def main():
     cmd.mode = 7
     cmd.vel_des = [0.0, 0.0, 0.0]
     lc.publish("robot_control_cmd", cmd.encode())
-    time.sleep(3.0) 
-    
+    time.sleep(3.0)
+
+    # ===================== 走到第四关起始位置 =====================
+    node.walk_to_next_level_start()
+
     node.destroy_node()
     rclpy.shutdown()
 
