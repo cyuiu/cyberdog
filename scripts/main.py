@@ -14,8 +14,7 @@ LEVELS = [
     ("第二关：击球", "/home/loco_hl_example/scripts/hitball.py"),
     ("第三关：视觉巡线", "/home/loco_hl_example/scripts/race3.py"),
     ("第四关：level_four", "/home/loco_hl_example/scripts/level_four.py"),
-    # 第五关暂未完成，预留位置
-    # ("第五关：待定", "/home/loco_hl_example/scripts/level_five.py"),
+    ("第五关：斜坡行走", "/home/loco_hl_example/scripts/r52.py"),
     ("第六关：足球", "/home/loco_hl_example/scripts/football.py"),
 ]
 

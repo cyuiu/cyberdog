@@ -1,0 +1,29 @@
+# 前腿站立后腿蹲走 - 步态参数
+# 前腿小步高，后腿正常步高
+# body pitch 正值 → 前高后低（后腿蹲）
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.25, 0.0, 0.0, 0.0, 0.18]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.02, 0.02, 0.10, 0.10]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 400
+
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.25, 0.0, 0.0, 0.0, 0.18]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.02, 0.02, 0.08, 0.08]
+weight          = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 400

@@ -1,0 +1,69 @@
+# 前腿站立后腿蹲走 - 步态定义
+# contact: [front_left, front_right, back_left, back_right]
+# 前腿始终着地，后腿交替抬腿行走
+
+# cycle 1
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 0, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 1, 0]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+# cycle 2
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 0, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+[[section]]
+contact  = [1, 1, 1, 0]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2

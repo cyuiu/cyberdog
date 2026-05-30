@@ -42,8 +42,8 @@ States:
   SET_CROUCH_3       – send crouch params, zero-vel settle at p11
   SQUAT_WALK_3       – crouch walk back to p10
   STAND_UP_AT_P10    – restore normal height, settle at p10
-  MOVE_TO_P13        – walk to p13 (standing)
-  ALIGN_YAW_P13      – align yaw to 0.0212 rad at p13
+  MOVE_TO_P13        – walk to p10_5 (standing)
+  ALIGN_YAW_P13      – align yaw to 0.0212 rad at p10_5
   MOVE_TO_P14        – walk forward to p14 (standing)
   FINAL_STOP        – damper stop
   TURN_TO_ZERO      – rotate to 0 rad
@@ -147,11 +147,12 @@ class SequentialTaskNode(Node):
         self.p7 = (1.8430, 8.2192)  # 横移终点，调整朝向
         self.p8 = (0.9750, 9.7024)  # 前进终点
         self.p9 = (0.9688, 10.8809)  # 前进终点
-        self.p10 = (-0.0873, 7.8036)  # 最终前进点
+        self.p10 = (1.8430, 7.0392)  # 最终前进点
+        self.p10_5 = (-0.1542, 7.2026)  # P10后新增横移点
+        self.p10_6 = (-0.1615, 8.9699)  # P10_5后新增前进点
         self.p11 = (-0.1482, 10.2624)  # 蹲走最终点
         self.p12 = (-0.1482, 10.9000)  # 站姿前进终点
-        self.p13 = (-0.0742, 7.2026)   # P13: 定位点
-        self.p14 = (2.9389, 7.1826)    # P14: 从P13前进到达
+        self.p14 = (2.9389, 7.1826)    # P14: 从P10_5前进到达
         self.p_exit = (3.1112, 7.1091)  # 出口点
 
         self.state = "STAND_UP"
@@ -651,7 +652,7 @@ class SequentialTaskNode(Node):
 
         # ── Stage 23: Align yaw at P8 (reverse direction) ───────
         elif self.state == "ALIGN_YAW_P8_REV":
-            yaw_target = -2.1007  # 倒退到P8后的目标朝向
+            yaw_target = -1.1233  # 倒退到P8后的目标朝向（P7反方向）
             yaw_err = normalize_angle(yaw_target - yaw)
 
             if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
@@ -659,7 +660,7 @@ class SequentialTaskNode(Node):
                     f"Stage 23: aligned, yaw_err={yaw_err:.3f} rad"
                 )
                 self.publish(0.0, 0.0, 0.0)
-                self.state = "MOVE_TO_P10"
+                self.state = "MOVE_TO_P7_BACK"
                 self.state_counter = 0
             else:
                 vyaw = YAW_ALIGN_KP * yaw_err
@@ -673,18 +674,18 @@ class SequentialTaskNode(Node):
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 24: Walk forward to P10 ───────────────────────
-        elif self.state == "MOVE_TO_P10":
-            dx_world = self.p10[0] - x
-            dy_world = self.p10[1] - y
+        # ── Stage 24: Walk back to P7 ───────────────────────────
+        elif self.state == "MOVE_TO_P7_BACK":
+            dx_world = self.p7[0] - x
+            dy_world = self.p7[1] - y
             dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
 
             if dist < POS_ALIGN_TOLERANCE:
                 self.get_logger().info(
-                    f"Stage 24: reached P10, dist={dist:.3f} m"
+                    f"Stage 24: reached P7, dist={dist:.3f} m"
                 )
                 self.publish(0.0, 0.0, 0.0)
-                self.state = "ALIGN_YAW_AT_P10"
+                self.state = "ALIGN_YAW_AT_P7_BACK"
                 self.state_counter = 0
             else:
                 body_vx = POS_ALIGN_KP * (dx_world * math.cos(yaw) + dy_world * math.sin(yaw))
@@ -693,12 +694,135 @@ class SequentialTaskNode(Node):
                 body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
                 self.publish(body_vx, body_vy, 0.0)
                 self.get_logger().info(
-                    f"Stage 24: walking to P10 — x={x:.3f} y={y:.3f}  "
+                    f"Stage 24: walking to P7 — x={x:.3f} y={y:.3f}  "
                     f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 25: Align yaw to initial direction at P10 ─────
+        # ── Stage 24b: Adjust yaw at P7 (face -90°) ─────────────
+        elif self.state == "ALIGN_YAW_AT_P7_BACK":
+            yaw_target = -1.5708  # -90度
+            yaw_err = normalize_angle(yaw_target - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 24b: aligned, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_P10"
+                self.state_counter = 0
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 24b: aligning yaw — yaw={yaw:.3f}  "
+                    f"target={yaw_target:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 25: Walk forward to P10 ───────────────────────
+        elif self.state == "MOVE_TO_P10":
+            dy = self.p10[1] - y
+
+            if abs(dy) < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 25: reached P10, dy={dy:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "TURN_AROUND_AT_P10"
+                self.state_counter = 0
+            else:
+                self.publish(0.15, 0.0, 0.0)
+                self.get_logger().info(
+                    f"Stage 25: walking to P10 — y={y:.3f}  dy={dy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 25b: Turn around at P10 (180°) ────────────────
+        elif self.state == "TURN_AROUND_AT_P10":
+            if self.state_counter == 0:
+                self.turn_target_yaw = normalize_angle(yaw + math.pi)
+                self.get_logger().info(
+                    f"Stage 25b: Turning 180° — yaw={yaw:.3f} → target={self.turn_target_yaw:.3f}"
+                )
+
+            yaw_err = normalize_angle(self.turn_target_yaw - yaw)
+
+            if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 25b: turn complete, yaw_err={yaw_err:.3f} rad"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "MOVE_TO_P10_5"
+                self.state_counter = 0
+            else:
+                vyaw = YAW_ALIGN_KP * yaw_err
+                if abs(vyaw) < YAW_ALIGN_MIN_VYAW:
+                    vyaw = YAW_ALIGN_MIN_VYAW if yaw_err > 0 else -YAW_ALIGN_MIN_VYAW
+                vyaw = max(-YAW_ALIGN_MAX_VYAW, min(YAW_ALIGN_MAX_VYAW, vyaw))
+                self.publish(0.0, 0.0, vyaw)
+                self.get_logger().info(
+                    f"Stage 25b: turning — yaw={yaw:.3f}  "
+                    f"target={self.turn_target_yaw:.3f}  err={yaw_err:.3f}  vyaw={vyaw:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+            self.state_counter += 1
+
+        # ── Stage 25c: Lateral move to P10_5 ────────────────────
+        elif self.state == "MOVE_TO_P10_5":
+            dx = self.p10_5[0] - x
+            if abs(dx) > 0.1:
+                self.publish(0.0, 0.2, 0.0)
+                self.get_logger().info(
+                    f"Stage 25c: lateral move to P10_5 x={x:.2f}",
+                    throttle_duration_sec=1.0,
+                )
+            else:
+                self.state = "MOVE_TO_P10_6"
+                self.state_counter = 0
+
+        # ── Stage 25d: Walk forward to P10_6 ────────────────────
+        elif self.state == "MOVE_TO_P10_6":
+            dy = self.p10_6[1] - y
+            if dy > 0.1:
+                self.publish(0.15, 0.0, 0.0)
+                self.get_logger().info(
+                    f"Stage 25d: walking to P10_6 y={y:.2f}",
+                    throttle_duration_sec=1.0,
+                )
+            else:
+                self.state = "ALIGN_POSITION_AT_P10_6"
+                self.state_counter = 0
+
+        # ── Stage 25e: Fine-tune position at P10_6 ──────────────
+        elif self.state == "ALIGN_POSITION_AT_P10_6":
+            dx = self.p10_6[0] - x
+            dy = self.p10_6[1] - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 25e: position aligned at P10_6, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0)
+                self.state = "ALIGN_YAW_AT_P10"
+                self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx * math.cos(yaw) + dy * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx * math.sin(yaw) + dy * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0)
+                self.get_logger().info(
+                    f"Stage 25e: aligning position — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
+
+        # ── Stage 26: Align yaw to initial direction at P10 ─────
         elif self.state == "ALIGN_YAW_AT_P10":
             yaw_err = normalize_angle(YAW_ALIGN_TARGET - yaw)
 
@@ -768,8 +892,33 @@ class SequentialTaskNode(Node):
                     throttle_duration_sec=1.0,
                 )
             else:
+                self.state = "ALIGN_POSITION_AT_P11"
+                self.state_counter = 0
+
+        # ── Stage 28b: Fine-tune position at P11 ────────────────
+        elif self.state == "ALIGN_POSITION_AT_P11":
+            dx = self.p11[0] - x
+            dy = self.p11[1] - y
+            dist = math.sqrt(dx * dx + dy * dy)
+
+            if dist < POS_ALIGN_TOLERANCE:
+                self.get_logger().info(
+                    f"Stage 28b: position aligned at P11, dist={dist:.3f} m"
+                )
+                self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
                 self.state = "STAND_UP_AT_P11"
                 self.state_counter = 0
+            else:
+                body_vx = POS_ALIGN_KP * (dx * math.cos(yaw) + dy * math.sin(yaw))
+                body_vy = POS_ALIGN_KP * (-dx * math.sin(yaw) + dy * math.cos(yaw))
+                body_vx = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vx))
+                body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
+                self.publish(body_vx, body_vy, 0.0, mode=11, gait=3)
+                self.get_logger().info(
+                    f"Stage 28b: aligning position — x={x:.3f} y={y:.3f}  "
+                    f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
+                    throttle_duration_sec=1.0,
+                )
 
         # ── Stage 29: Stand up at P11 ───────────────────────────
         elif self.state == "STAND_UP_AT_P11":
@@ -861,15 +1010,15 @@ class SequentialTaskNode(Node):
                 self.state = "SQUAT_WALK_3"
                 self.state_counter = 0
 
-        # ── Stage 34: Crouch walk to P10 ───────────────────────
+        # ── Stage 34: Crouch walk to P10_6 ─────────────────────
         elif self.state == "SQUAT_WALK_3":
-            dy_world = self.p10[1] - y
-            dx_world = self.p10[0] - x
+            dy_world = self.p10_6[1] - y
+            dx_world = self.p10_6[0] - x
             dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
 
             if dist < POS_ALIGN_TOLERANCE:
                 self.get_logger().info(
-                    f"Stage 35: crouch walked to P10, dist={dist:.3f} m"
+                    f"Stage 34: crouch walked to P10_6, dist={dist:.3f} m"
                 )
                 self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
                 self.state = "STAND_UP_AT_P10"
@@ -881,15 +1030,15 @@ class SequentialTaskNode(Node):
                 body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
                 self.publish(body_vx, body_vy, 0.0, mode=11, gait=3)
                 self.get_logger().info(
-                    f"Stage 35: crouch walking — dist={dist:.3f}  "
+                    f"Stage 34: crouch walking — dist={dist:.3f}  "
                     f"vx={body_vx:.3f} vy={body_vy:.3f}",
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 36: Stand up at P10 ────────────────────────────
+        # ── Stage 35: Stand up at P10_6 ──────────────────────────
         elif self.state == "STAND_UP_AT_P10":
             if self.state_counter == 0:
-                self.get_logger().info("Stage 36: Restoring normal height, standing up at P10...")
+                self.get_logger().info("Stage 35: Restoring normal height, standing up at P10_6...")
                 self.send_yaml_params(RESTORE_PARAMS)
 
             self.publish(0.0, 0.0, 0.0, mode=11, gait=3)
@@ -898,17 +1047,17 @@ class SequentialTaskNode(Node):
             if self.state_counter >= CROUCH_SETTLE_CYCLES:
                 self.state = "MOVE_TO_P13"
                 self.state_counter = 0
-                self.get_logger().info("Stage 36 done, walking to P13.")
+                self.get_logger().info("Stage 36 done, walking to P10_5.")
 
-        # ── Stage 37: Walk to P13 (standing) ────────────────────
+        # ── Stage 37: Walk to P10_5 (standing) ──────────────────
         elif self.state == "MOVE_TO_P13":
-            dx_world = self.p13[0] - x
-            dy_world = self.p13[1] - y
+            dx_world = self.p10_5[0] - x
+            dy_world = self.p10_5[1] - y
             dist = math.sqrt(dx_world * dx_world + dy_world * dy_world)
 
             if dist < POS_ALIGN_TOLERANCE:
                 self.get_logger().info(
-                    f"Stage 37: reached P13, dist={dist:.3f} m"
+                    f"Stage 37: reached P10_5, dist={dist:.3f} m"
                 )
                 self.publish(0.0, 0.0, 0.0)
                 self.state = "ALIGN_YAW_P13"
@@ -920,18 +1069,18 @@ class SequentialTaskNode(Node):
                 body_vy = max(-POS_ALIGN_MAX_VEL, min(POS_ALIGN_MAX_VEL, body_vy))
                 self.publish(body_vx, body_vy, 0.0)
                 self.get_logger().info(
-                    f"Stage 37: walking to P13 — x={x:.3f} y={y:.3f}  "
+                    f"Stage 37: walking to P10_5 — x={x:.3f} y={y:.3f}  "
                     f"dist={dist:.3f}  vx={body_vx:.3f} vy={body_vy:.3f}",
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 38: Align yaw at P13 ──────────────────────────
+        # ── Stage 38: Align yaw at P10_5 ────────────────────────
         elif self.state == "ALIGN_YAW_P13":
             yaw_err = normalize_angle(YAW_P13_TARGET - yaw)
 
             if abs(yaw_err) < YAW_ALIGN_TOLERANCE:
                 self.get_logger().info(
-                    f"Stage 38: aligned to P13 yaw, yaw_err={yaw_err:.3f} rad"
+                    f"Stage 38: aligned to P10_5 yaw, yaw_err={yaw_err:.3f} rad"
                 )
                 self.publish(0.0, 0.0, 0.0)
                 self.state = "MOVE_TO_P14"
@@ -973,9 +1122,9 @@ class SequentialTaskNode(Node):
                     throttle_duration_sec=1.0,
                 )
 
-        # ── Stage 39: Damper stop ───────────────────────────────
+        # ── Stage 39: Stand stop ────────────────────────────────
         elif self.state == "FINAL_STOP":
-            self.publish(0, 0, 0, mode=7)
+            self.publish(0, 0, 0, mode=12)
             self.state_counter += 1
 
             if self.state_counter >= 20:  # ~2 seconds

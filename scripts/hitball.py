@@ -74,10 +74,10 @@ class HitOrangeBallsBase(Node):
         self.declare_parameter("special_hit_offset_y", 0.0)
         self.declare_parameter("special_hit_yaw", 3.14)
 
-        self.declare_parameter("impact_speed", 0.60)
-        self.declare_parameter("impact_time", 1.4)
-        self.declare_parameter("reverse_impact_speed", 0.60)
-        self.declare_parameter("reverse_impact_time", 1.5)
+        self.declare_parameter("impact_speed", 0.38)
+        self.declare_parameter("impact_time", 0.9)
+        self.declare_parameter("reverse_impact_speed", 0.38)
+        self.declare_parameter("reverse_impact_time", 1.1)
 
         self.declare_parameter("log_period", 5.0)
         self.declare_parameter("control_period", 0.1)

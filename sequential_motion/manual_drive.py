@@ -22,6 +22,9 @@ def make_cmd():
     msg.gait_id = 3
     msg.contact = 15
     msg.duration = 0
+    msg.vel_des = [0.0, 0.0, 0.0]
+    msg.rpy_des = [0.0, 0.3, 0.0]  # 初始正pitch，前高后低
+    msg.pos_des = [0.0, 0.0, 0.25]
     msg.step_height = [0.05, 0.05]
     return msg
 
@@ -69,6 +72,12 @@ def main():
     max_vx = 0.15
     max_vy = 0.10
     max_yaw = 0.50
+    pitch_step = 0.05
+    max_pitch = 0.60
+    min_pitch = -0.50
+    body_step = 0.02
+    min_body = 0.15
+    max_body = 0.40
 
     old_settings = termios.tcgetattr(sys.stdin)
 
@@ -77,6 +86,8 @@ def main():
     print("  w/s: forward/back")
     print("  a/d: turn left/right")
     print("  q/e: move left/right")
+    print("  t/g: pitch +/- (前高后低/前低后高)")
+    print("  y/h: body height +/-")
     print("  space: stop velocity")
     print("  z: damper stop")
     print("  Ctrl+C: damper stop and quit")
@@ -103,6 +114,14 @@ def main():
                 msg.vel_des[2] = min(max_yaw, msg.vel_des[2] + yaw_step)
             elif key == "d":
                 msg.vel_des[2] = max(-max_yaw, msg.vel_des[2] - yaw_step)
+            elif key == "t":
+                msg.rpy_des[1] = min(max_pitch, msg.rpy_des[1] + pitch_step)
+            elif key == "g":
+                msg.rpy_des[1] = max(min_pitch, msg.rpy_des[1] - pitch_step)
+            elif key == "y":
+                msg.pos_des[2] = min(max_body, msg.pos_des[2] + body_step)
+            elif key == "h":
+                msg.pos_des[2] = max(min_body, msg.pos_des[2] - body_step)
             elif key == " ":
                 msg.vel_des = [0.0, 0.0, 0.0]
             elif key == "z":
@@ -111,8 +130,9 @@ def main():
 
             publish(lc, msg)
             print(
-                "\rvx={:.2f} vy={:.2f} yaw={:.2f}      ".format(
-                    msg.vel_des[0], msg.vel_des[1], msg.vel_des[2]
+                "\rvx={:.2f} vy={:.2f} yaw={:.2f} pitch={:.2f} body_h={:.2f}      ".format(
+                    msg.vel_des[0], msg.vel_des[1], msg.vel_des[2],
+                    msg.rpy_des[1], msg.pos_des[2]
                 ),
                 end="",
                 flush=True,

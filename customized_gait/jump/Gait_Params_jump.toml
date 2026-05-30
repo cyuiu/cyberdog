@@ -1,0 +1,77 @@
+# Gait Params for Lateral Jump
+# 跳跃步态参数：蹲下 → 起跳 → 空中 → 落地
+
+# 阶段1：蹲下蓄力（快速蹲下）
+# 身体降低到 0.12m，准备起跳
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, 0.12]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.02, 0.02, 0.02, 0.02]
+weight          = [20.0, 20.0, 20.0, 100.0, 100.0, 20.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 300
+
+# 阶段2：起跳蹬地（爆发起跳）
+# 身体快速升高到 0.45m，同时给横向速度
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.8, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, 0.45]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.15, 0.15, 0.15, 0.15]
+weight          = [50.0, 50.0, 50.0, 250.0, 250.0, 50.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 120
+
+# 阶段3：空中飞行
+# 保持横向速度，身体高度维持
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.8, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, 0.40]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.12, 0.12, 0.12, 0.12]
+weight          = [20.0, 20.0, 20.0, 100.0, 100.0, 20.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 250
+
+# 阶段4：落地缓冲（深度蹲下吸收冲击）
+# 身体降低吸收冲击，停止横向移动
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, 0.10]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.02, 0.02, 0.02, 0.02]
+weight          = [15.0, 15.0, 15.0, 80.0, 80.0, 15.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 2.0
+gait_id         = 110
+duration        = 600
+
+# 阶段5：落地稳定（缓慢站起）
+# 恢复正常站立高度
+[[step]]
+type            = "usergait"
+body_vel_des    = [0.0, 0.0, 0.0]
+body_pos_des    = [0.0, 0.0, 0.0, 0.0, 0.0, 0.22]
+landing_pos_des = [0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0,  0.0, 0.0, 0.0]
+step_height     = [0.04, 0.04, 0.04, 0.04]
+weight          = [8.0, 8.0, 8.0, 40.0, 40.0, 8.0]
+use_mpc_traj    = 0
+mu              = 0.40
+landing_gain    = 1.0
+gait_id         = 110
+duration        = 800

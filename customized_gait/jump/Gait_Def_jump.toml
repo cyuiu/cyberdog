@@ -1,0 +1,47 @@
+# Gait Definition for Lateral Jump
+# 每个阶段包含多个 section，匹配 moonwalk 结构
+
+# 阶段1：蹲下蓄力
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+# 阶段2：起跳蹬地
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 4
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+# 阶段3：空中飞行
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 6
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+# 阶段4：落地缓冲
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2
+
+# 阶段5：落地稳定
+[[section]]
+contact  = [1, 1, 1, 1]
+duration = 8
+
+[[section]]
+contact  = [0, 0, 0, 0]
+duration = 2

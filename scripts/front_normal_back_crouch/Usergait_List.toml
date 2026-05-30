@@ -1,0 +1,47 @@
+# 前腿站立后腿蹲走 - 执行列表
+# mode=12 站立 → mode=11 执行步态 → mode=7 停止
+
+[[step]]
+mode            = 12
+gait_id         = 0
+contact         = 0
+life_count      = 0
+vel_des         = [0.0, 0.0, 0.0]
+rpy_des         = [0.0, 0.0, 0.0]
+pos_des         = [0.0, 0.0, 0.0]
+acc_des         = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose       = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point      = [0.0, 0.0, 0.0]
+step_height     = [0.0, 0.0]
+value           = 0
+duration        = 5000
+
+[[step]]
+mode            = 11
+gait_id         = 110
+contact         = 15
+life_count      = 0
+vel_des         = [0.10, 0.0, 0.0]
+rpy_des         = [0.0, 0.25, 0.0]
+pos_des         = [0.0, 0.0, 0.18]
+acc_des         = [10.0, 10.0, 10.0, 50.0, 50.0, 10.0]
+foot_pose       = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point      = [0.0, 0.0, 0.0]
+step_height     = [20020.0, 100100.0]
+value           = 0
+duration        = 8000
+
+[[step]]
+mode            = 7
+gait_id         = 0
+contact         = 0
+life_count      = 0
+vel_des         = [0.0, 0.0, 0.0]
+rpy_des         = [0.0, 0.0, 0.0]
+pos_des         = [0.0, 0.0, 0.0]
+acc_des         = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose       = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ctrl_point      = [0.0, 0.0, 0.0]
+step_height     = [0.0, 0.0]
+value           = 0
+duration        = 3000

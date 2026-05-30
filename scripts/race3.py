@@ -27,10 +27,14 @@ import lcm
 from robot_control_cmd_lcmt import robot_control_cmd_lcmt
 
 
-# ===================== 视觉控制参数（纯净高敏捷版） =====================
-FORWARD_SPEED = 0.12  # 直道稳定速度
-KP = 0.0025           # 解放比例系数！起跑线锁死后，可以用高敏捷度确保极其居中
-KD = 0.0006           # 微分项
+# ===================== 视觉控制参数（纯视觉优化版） =====================
+FORWARD_SPEED = 0.12  # 直道稳定前进速度
+KP = 0.0025           # PD控制比例系数
+KD = 0.0006           # PD控制微分系数
+
+# 🔍 纯视觉弯道/分叉口识别面积阈值
+# 当裁切后的画面中黄色像素点的总面积超过这个值时，判定正在过关键弯道/分叉口
+FORK_AREA_THRESHOLD = 8000
 
 class PerfectStartTrackingNode(Node):
     def __init__(self):
@@ -48,11 +52,12 @@ class PerfectStartTrackingNode(Node):
         self.has_image = False
 
         # 状态机变量
-        self.forced_right_turn_done = False
-        self.is_turning_right = False
-        self.turn_start_time = 0.0
         self.is_reached_goal = False
         self.first_image_time = 0.0
+
+        # 纯视觉状态机标志位
+        self.in_fork_zone = False
+        self.turned_into_final_lane = False
 
         # 位置跟踪变量
         self.latest_pose = None
@@ -293,77 +298,81 @@ class PerfectStartTrackingNode(Node):
     def image_callback(self, msg):
         try:
             if self.is_reached_goal:
+                self.wz = 0.0
                 return
 
-            if self.first_image_time == 0.0:
-                self.first_image_time = time.time()
-            
-            elapsed_time = time.time() - self.first_image_time
-
-            # ===================== ⏳ 1. 智能分叉口拐弯状态机 =====================
-            # 既然起点现在是 100% 完美的，13.2秒的拦截时间点将会变得极其精准，绝对不会有半秒误差！
-            if elapsed_time > 13.2 and not self.forced_right_turn_done and not self.is_turning_right:
-                print(f"[智能控制] 准时到达危险分叉口！触发右转拧头机制！")
-                self.is_turning_right = True
-                self.turn_start_time = time.time()
-
-            if self.is_turning_right:
-                if time.time() - self.turn_start_time < 2.5: 
-                    self.wz = -0.50  # 完美的盲转力度
-                    self.has_image = True
-                    return
-                else:
-                    self.is_turning_right = False
-                    self.forced_right_turn_done = True
-                    print("[智能控制] 转向成功，切入最终冲刺道！开始监测终点黄线...")
-
-            # ===================== 📸 2. 正常读取相机画面巡线 =====================
+            # ===================== 📸 1. 精准区域裁剪（彻底屏蔽左侧死胡同） =====================
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
             h, w, _ = cv_image.shape
-            
-            # 物理级大低头 + 剪裁
-            roi = cv_image[int(h*0.82):int(h*0.97), int(w*0.35):int(w*1.0)]
+
+            # 🎯【核心物理屏蔽】纵向看远到 0.75（提前预判弯道），横向砍掉左侧 45% 的视野（w*0.45 到 1.0）
+            # 这样左边的死胡同黄线在图像层面上根本不会出现，狗子只会专注地看右侧正确道路！
+            roi = cv_image[int(h*0.75):int(h*0.97), int(w*0.45):int(w*1.0)]
             roi_h, roi_w, _ = roi.shape
-            
-            # 颜色分割
+
+            # 颜色空间转换与黄色掩膜提取
             hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
             lower_yellow = np.array([15, 40, 40])
             upper_yellow = np.array([35, 255, 255])
             mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
-            
-            # ===================== 🏁 3. 终点横线全自动碰撞检测 =====================
-            if self.forced_right_turn_done:
-                left_check   = mask[int(roi_h * 0.85), int(roi_w * 0.15)]  
-                center_check = mask[int(roi_h * 0.85), int(roi_w * 0.50)]  
-                right_check  = mask[int(roi_h * 0.85), int(roi_w * 0.85)]  
-                
+
+            # ===================== 🏁 2. 终点横线全自动检测 =====================
+            # 【双重保险】只有当成功避开分叉口并切入最终车道后，才解锁终点线检测，杜绝中途误判落座
+            if self.turned_into_final_lane:
+                left_check   = mask[int(roi_h * 0.85), int(roi_w * 0.15)]
+                center_check = mask[int(roi_h * 0.85), int(roi_w * 0.50)]
+                right_check  = mask[int(roi_h * 0.85), int(roi_w * 0.85)]
+
                 if left_check == 255 and center_check == 255 and right_check == 255:
-                    print("[🏁 终点制动] 探测到脚尖前全贯通横向终点线！正在紧急安全落座...")
+                    print("[🏁 终点制动] 纯视觉捕捉到贯通终点线！正在紧急安全落座...")
                     self.wz = 0.0
                     self.error = 0.0
                     self.is_reached_goal = True
                     self.has_image = True
                     return
 
-            # ===================== 🐕 4. 纯净自适应巡线（告别死偏置） =====================
+            # ===================== 🐕 3. 纯净自适应巡线控制 =====================
             M = cv2.moments(mask)
-            if M["m00"] > 0:
-                cx = int(M["m10"] / M["m00"])
+            total_area = M["m00"]
+
+            if total_area > 0:
+                cx = int(M["m10"] / total_area)
                 screen_center = roi_w / 2
-                
-                # 【回归纯净】不加任何奇奇怪怪的偏置！
-                # 因为起点完美对齐了，狗子会天生无比丝滑地走在正中央，两边踩线的隐患直接从物理上被消灭！
-                self.error = screen_center - cx
-                
-                # PD 控制器
+
+                # 🔧【安全居中偏置】因为你的轨迹总是偏右踩黄线，这里增加一个居中修正偏差
+                # 迫使车身在巡线时主动向左靠拢，留出安全车宽。若仍踩右线可改大（如 45）；若偏左可改小（如 15）
+                LINE_OFFSET = 55
+                target_center = screen_center + LINE_OFFSET
+
+                # 👁️【纯视觉分叉口/大发卡弯识别处理】
+                if total_area > FORK_AREA_THRESHOLD and not self.turned_into_final_lane:
+                    if not self.in_fork_zone:
+                        print(f"[👁️ 视觉感知] 黄色面积增大至 {total_area:.0f}！捕捉到关键右大弯，开启高敏捷强制切入")
+                        self.in_fork_zone = True
+
+                    # 此时由于左侧被物理裁剪，画面里只有右侧正确车道，直接给一个稳定的向右拧头角速度
+                    self.wz = -0.40  # 稳定的右转弯转向动力
+                    self.error = target_center - cx
+                    self.has_image = True
+
+                    # 当黄线重新回正到视野偏左的舒适安全区域时，宣告彻底通过分叉弯道
+                    if cx > screen_center:
+                        self.in_fork_zone = False
+                        self.turned_into_final_lane = True
+                        print("[👁️ 视觉感知] 已完美切入冲刺直道，正常巡线机制全面接管。")
+                    return
+
+                # 正常直道和普通弯道的闭环 PD 控制
+                self.error = target_center - cx
                 p_term = KP * self.error
                 d_term = KD * (self.error - self.last_error)
+
                 self.wz = p_term + d_term
                 self.last_error = self.error
-                
                 self.wz = max(-0.45, min(self.wz, 0.45))
                 self.has_image = True
             else:
+                # 发生丢失线信号时的安全右转寻线保护
                 self.wz = -0.22
                 self.has_image = True
 
@@ -427,8 +436,8 @@ def main():
             cmd.contact = 15
             cmd.step_height = [0.25, 0.25]
             
-            if node.is_turning_right or abs(node.wz) > 0.05:
-                current_vx = 0.04  
+            if node.in_fork_zone or abs(node.wz) > 0.05:
+                current_vx = 0.04
             else:
                 current_vx = FORWARD_SPEED  
             
